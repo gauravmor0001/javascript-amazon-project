@@ -122,3 +122,13 @@ export function renderOrderSummary(){
   });
 }
 
+
+export function updateCheckOutValue(){
+  let checkOutQuantity=0;
+  cart.forEach((cartItem)=>{
+    checkOutQuantity+=cartItem.quantity;
+  });
+  document.querySelector('.return-to-home-link-js').innerHTML=checkOutQuantity;
+}
+
+
