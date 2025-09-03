@@ -56,6 +56,11 @@ class Clothing extends Product{
 }
 
 
+// const date=new Date();
+// console.log(date);
+// console.log(date.toLocaleTimeString());
+// we have used dayjs that uses this behind scens but give us more features(this was inbuilt library)
+
 
 // const product1=new Product({
 //   id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -73,6 +78,28 @@ class Clothing extends Product{
 //   ]});
 // console.log(product1);
 
+// const object3={
+//   method(){
+//     console.log(this);
+//   }
+// };
+//inside a method "this" points to the outer object.
+
+
+// function logThis(){
+//   console.log(this);
+// }
+// logThis();
+// logThis.call('hello');
+//"this" inside a function is undefined, we can use .call() to change "this" value.
+
+// const object3={
+//   method:()=>{
+//     console.log(this);
+//   }
+// };
+// object3.method();
+// arrow functions do not change the value of this, this is still pointing to what it will point outside of arrow function.
 
  export const products = [
   {
