@@ -33,7 +33,29 @@ class Product{
   getPrice(){
     return `$${formatCurrency(this.priceCents)}`
   }
+
+  extraInfoHTML(){
+    return '';
+  }
 }
+
+class Clothing extends Product{
+  sizechartLink;
+
+  constructor(productDetails){
+    super(productDetails);
+    //super() this call the constructor of parent class.we have properties of parent class but still need to use them like the constructor of parent class , we have it but we still have to call it same goes for properties, also when child class is empty parent class constructor autorun.
+    this.sizechartLink=productDetails.sizeChartLink;
+  }
+  extraInfoHTML(){
+    // super.extraInfoHTML();
+    return `
+      <a href="${this.sizechartLink}" target="_blank">Size chart</a>
+    `;
+  }
+}
+
+
 
 // const product1=new Product({
 //   id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -712,5 +734,8 @@ class Product{
     ]
   }
 ].map((productDetails)=>{
+  if(productDetails.type==='clothing'){
+    return new Clothing(productDetails);
+  }
   return new Product(productDetails);
 })
