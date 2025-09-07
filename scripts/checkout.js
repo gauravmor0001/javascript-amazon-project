@@ -50,13 +50,21 @@ Promise.all([
 */
 
 async function loadPage(){
-    await loadProductsFetch();
-    //await can only be used when inside a async function
-    const value= await new Promise((resolve)=>{
-        loadCart(()=>{
-            resolve('value3');
+    try{
+        // throw 'error1';
+        await loadProductsFetch();
+        //await can only be used when inside a async function
+        const value= await new Promise((resolve,reject)=>{
+            // throw 'error2';
+            loadCart(()=>{
+                // reject('error3');
+                resolve('value3');
+            });
         });
-    });
+    }catch(error){
+        console.log('Unexpected erorr! , pls try again later');
+    }
+
     renderOrderSummary();
     renderPaymentSummary();
 
