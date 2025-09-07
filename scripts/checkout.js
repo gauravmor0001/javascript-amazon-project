@@ -34,6 +34,7 @@ new Promise((resolve)=>{
 */
 // we can also call multiply promises simulataneously with the help of Promise.all 
 
+/*
 Promise.all([
     loadProductsFetch(),
     new Promise((resolve)=>{
@@ -46,3 +47,25 @@ Promise.all([
     renderOrderSummary();
     renderPaymentSummary();
 });
+*/
+
+async function loadPage(){
+    await loadProductsFetch();
+    //await can only be used when inside a async function
+    const value= await new Promise((resolve)=>{
+        loadCart(()=>{
+            resolve('value3');
+        });
+    });
+    renderOrderSummary();
+    renderPaymentSummary();
+
+
+}
+loadPage();
+/*
+loadPage().then((value)=>{
+    console.log('next step');
+    console.log(value);
+})
+*/
